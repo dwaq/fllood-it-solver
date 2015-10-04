@@ -37,13 +37,20 @@ for col in range(num_high):
 
 #print colors_array[0]
 
+# keep track of what colors are touching in a giant array
+touching_array = [[[0 for x in range(num_wide)] for x in range(num_high)] for x in range(len(colors))]
+
+#print touching_array
+
+
 # using the array, figure out how big the inital "block" is
 # go across row 0, seeing how far it's the same color
-# starting at 1, becasue the first one always has to match
-y_cntr = 1
-for y in range(num_wide-1):
-	# if the next is the same color, as this one, increase counter
-	if colors_array[0][y] == colors_array[0][y+1]:
+y_cntr = 0
+# the color of the box at (0,0)
+origin_color = colors_array[0][0]
+for y in range(num_wide):
+	# if this is the same color as the origin, increase counter
+	if colors_array[0][y] == origin_color:
 		y_cntr = y_cntr+1;
 	else:
 		# once they don't match, stop looking
