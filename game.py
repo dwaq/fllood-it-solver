@@ -65,8 +65,32 @@ for x in range(num_high):
 				if (colors_array[x][y] == touching_array[origin_color][x-1][y]):
 					# store a '1' signifying that this color is touching
 					touching_array[origin_color][x][y] = 1
-				
+					# go through the ones to the left and right of what is matching here
+					
 
+					''' # this stuff doesn't work correctly
+					#left
+					y_temp = y
+					print y_temp
+					while (y_temp>=0):
+						if colors_array[x][y_temp] == origin_color:
+							touching_array[origin_color][x][y_temp] = 1
+						else:
+							break
+						y_temp = y_temp -1
+
+					#right
+					y_temp = y
+					while (y_temp<num_wide):
+						if colors_array[x][y_temp] == origin_color:
+							touching_array[origin_color][x][y_temp] = 1
+						else:
+							break
+						y_temp = y_temp + 1
+					'''
+
+
+	# still need to figure out how to match something above
 
 # draw a small black square on them so I know it's been counted - for debugging
 # create columns
