@@ -44,28 +44,22 @@ touching_array = [[[0 for x in range(num_wide)] for x in range(num_high)] for x 
 
 
 # using the array, figure out how big the inital "block" is
-# go across row 0, seeing how far it's the same color
-y_cntr = 0
 # the color of the box at (0,0)
 origin_color = colors_array[0][0]
 for y in range(num_wide):
 	# if this is the same color as the origin, increase counter
 	if colors_array[0][y] == origin_color:
-		y_cntr = y_cntr+1;
 		# store a '1' signifying that this color is touching
 		touching_array[0][y][origin_color] = 1
 	else:
 		# once they don't match, stop looking
 		break
 
-print y_cntr
-
-
 
 # draw a small black square on them so I know it's been counted - for debugging
 # create columns
 #for col in range(num_high):
-for col in range(1):
+for col in range(2):
     # create a row across in that column
     for row in range(num_wide):
     	if (touching_array[col][row][origin_color] == 1):
