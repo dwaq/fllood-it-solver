@@ -46,23 +46,24 @@ touching_array = [[[0 for x in range(num_wide)] for x in range(num_high)] for x 
 # using the array, figure out how big the inital "block" is
 # the color of the box at (0,0)
 origin_color = colors_array[0][0]
-for y in range(num_wide):
-	# if this is the same color as the origin, increase counter
-	if colors_array[0][y] == origin_color:
-		# store a '1' signifying that this color is touching
-		touching_array[0][y][origin_color] = 1
-	else:
-		# once they don't match, stop looking
-		break
+for x in range(num_high):
+	for y in range(num_wide):
+		# if this is the same color as the origin, increase counter
+		if colors_array[x][y] == origin_color:
+			# store a '1' signifying that this color is touching
+			touching_array[origin_color][x][y] = 1
+		else:
+			# once they don't match, stop looking
+			break
 
 
 # draw a small black square on them so I know it's been counted - for debugging
 # create columns
 #for col in range(num_high):
-for col in range(2):
+for col in range(num_high):
     # create a row across in that column
     for row in range(num_wide):
-    	if (touching_array[col][row][origin_color] == 1):
+    	if (touching_array[origin_color][col][row] == 1):
     		# if it's touching, color it black
         	c.create_rectangle(row*w, col*h, (row*w)+(w/2), (col*h)+(h/2), fill="black")
 
