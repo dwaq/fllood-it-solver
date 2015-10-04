@@ -48,13 +48,24 @@ touching_array = [[[0 for x in range(num_wide)] for x in range(num_high)] for x 
 origin_color = colors_array[0][0]
 for x in range(num_high):
 	for y in range(num_wide):
-		# if this is the same color as the origin, increase counter
-		if colors_array[x][y] == origin_color:
-			# store a '1' signifying that this color is touching
-			touching_array[origin_color][x][y] = 1
+		# first row only cares about what's to the left of it
+		if (x == 0):
+			# if this is the same color as the origin
+			if colors_array[x][y] == origin_color:
+				# store a '1' signifying that this color is touching
+				touching_array[origin_color][x][y] = 1
+			else:
+				# once they don't match, stop looking
+				break
+		# other rows need to match the row abocve it
 		else:
-			# once they don't match, stop looking
-			break
+			# if this color is the same color as the origin
+			if (colors_array[x][y] == origin_color):
+				# AND the one above it is "touching"
+				if (colors_array[x][y] == touching_array[origin_color][x-1][y]):
+					# store a '1' signifying that this color is touching
+					touching_array[origin_color][x][y] = 1
+				
 
 
 # draw a small black square on them so I know it's been counted - for debugging
