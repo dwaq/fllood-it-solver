@@ -52,6 +52,8 @@ for y in range(num_wide):
 	# if this is the same color as the origin, increase counter
 	if colors_array[0][y] == origin_color:
 		y_cntr = y_cntr+1;
+		# store a '1' signifying that this color is touching
+		touching_array[0][y][origin_color] = 1
 	else:
 		# once they don't match, stop looking
 		break
@@ -65,8 +67,10 @@ print y_cntr
 #for col in range(num_high):
 for col in range(1):
     # create a row across in that column
-    for row in range(y_cntr):
-        c.create_rectangle(row*w, col*h, (row*w)+(w/2), (col*h)+(h/2), fill="black")
+    for row in range(num_wide):
+    	if (touching_array[col][row][origin_color] == 1):
+    		# if it's touching, color it black
+        	c.create_rectangle(row*w, col*h, (row*w)+(w/2), (col*h)+(h/2), fill="black")
 
 
 
