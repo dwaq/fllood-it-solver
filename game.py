@@ -40,7 +40,7 @@ for col in range(num_high):
 # keep track of what colors are touching in a giant array
 touching_array = [[[0 for x in range(num_wide)] for x in range(num_high)] for x in range(len(colors))]
 
-#print touching_array
+print touching_array
 
 
 # using the array, figure out how big the inital "block" is
